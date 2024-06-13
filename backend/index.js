@@ -1,8 +1,8 @@
-import express from "express";
-import { connect } from "mongoose";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import { userRoutes } from "./routes/userRoutes.js";
+const express = require("express");
+const { connect } = require("mongoose");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const userRoutes = require("./routes/userRoutes.js");
 
 const app = express();
 

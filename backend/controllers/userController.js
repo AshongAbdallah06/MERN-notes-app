@@ -1,23 +1,24 @@
-import { User } from "../models/User.js";
+const { User } = require("../models/User.js");
 
-export const home_redirect = (req, res) => {
+const home_redirect = (req, res) => {
 	res.redirect("home");
 };
 
-export const home_get = (req, res) => {
-	res.send("Helo");
+const home_get = (req, res) => {
+	res.send("home");
 };
 
-export const login_get = (req, res) => {
+const login_get = (req, res) => {
 	res.send("login");
 };
 
-export const signup_get = (req, res) => {
+const signup_get = (req, res) => {
 	res.send(req.body);
 };
 
-export const signup_post = async (req, res) => {
+const signup_post = async (req, res) => {
 	res.json(req.body);
 
 	const user = await User.create(req.body);
 };
+module.exports = { home_redirect, home_get, login_get, signup_get, signup_post };

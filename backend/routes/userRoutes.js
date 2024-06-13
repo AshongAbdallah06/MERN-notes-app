@@ -1,20 +1,23 @@
-import { Router } from "express";
-import {
+const { Router } = require("express");
+const {
 	home_get,
 	home_redirect,
 	login_get,
 	signup_get,
 	signup_post,
-} from "../controllers/userController.js";
+} = require("../controllers/userController.js");
 
-export const userRoutes = Router();
+const userRoutes = Router();
+const userController = require("../controllers/userController.js");
 
-userRoutes.get("/", home_redirect);
+userRoutes.get("/", userController.home_redirect);
 
-userRoutes.get("/home", home_get);
+userRoutes.get("/home", userController.home_get);
 
-userRoutes.get("/login", login_get);
+userRoutes.get("/login", userController.login_get);
 
-userRoutes.get("/signup", signup_get);
+userRoutes.get("/signup", userController.signup_get);
 
-userRoutes.post("/signup", signup_post);
+userRoutes.post("/signup", userController.signup_post);
+
+module.exports = userRoutes;

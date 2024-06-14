@@ -7,7 +7,7 @@ const Signup = () => {
 
 	const [errors, setErrors] = useState({ email, username, password });
 
-	const submitForm = async () => {
+	const signup = async () => {
 		const response = await fetch("http://localhost:3001/signup", {
 			method: "POST",
 			body: JSON.stringify({ username, email, password }),
@@ -22,6 +22,16 @@ const Signup = () => {
 				username: data.errors.username,
 				password: data.errors.password,
 			});
+		} else {
+			setErrors({
+				email: "",
+				username: "",
+				password: "",
+			});
+		}
+
+		if (data.user) {
+			window.location.href = "/";
 		}
 	};
 
@@ -32,7 +42,7 @@ const Signup = () => {
 			onSubmit={(e) => {
 				e.preventDefault();
 
-				submitForm();
+				signup();
 			}}
 		>
 			<h1 className="headings">Signup</h1>

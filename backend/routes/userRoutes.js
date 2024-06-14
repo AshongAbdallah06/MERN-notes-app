@@ -16,6 +16,8 @@ userRoutes.get("/home", userController.home_get);
 
 userRoutes.get("/login", userController.login_get);
 
+userRoutes.post("/login", userController.login_post);
+
 userRoutes.get("/signup", userController.signup_get);
 
 userRoutes.post("/signup", userController.signup_post);

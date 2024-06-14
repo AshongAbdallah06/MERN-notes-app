@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const { genSalt, hash } = require("bcrypt");
+const { genSalt, hash, compare } = require("bcrypt");
 const { isEmail, isStrongPassword } = require("validator");
 
 const userSchema = new Schema({
@@ -24,10 +24,27 @@ const userSchema = new Schema({
 	},
 });
 
-userSchema.pre("save", async function () {
+userSchema.pre("save", async function (next) {
 	const salt = await genSalt();
 	this.password = await hash(this.password, salt);
+
+	next();
 });
+
+userSchema.statics.login = async function (email, password) {
+	const user = await this.findOne({ email });
+
+	if (user) {
+		const userPassword = await compare(password, user.password);
+
+		// If user password matches
+		if (userPassword) {
+			return user;
+		}
+		throw Error("incorrect password");
+	}
+	throw Error("user not found");
+};
 
 const User = model("user", userSchema);
 module.exports = User;

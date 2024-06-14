@@ -1,23 +1,24 @@
 const { Schema, model } = require("mongoose");
 const { genSalt, hash } = require("bcrypt");
-const { isEmail } = require("validator");
+const { isEmail, isStrongPassword } = require("validator");
 
 const userSchema = new Schema({
 	email: {
 		type: String,
-		required: true,
+		required: [true, "This field is required"],
 		unique: true,
 		lowercase: true,
 		validate: [isEmail, "Enter a valid email address"],
 	},
 	password: {
 		type: String,
-		required: true,
-		// validate: [isStrongPassword, "Enter a strong Password"],
+		required: [true, "This field is required"],
+		validate: [isStrongPassword, "Enter a strong Password"],
 	},
 	username: {
 		type: String,
-		required: true,
+		required: [true, "This field is required"],
+		minlength: [3, "Must be at least 3 characters"],
 		unique: true,
 		lowercase: true,
 	},
@@ -26,8 +27,6 @@ const userSchema = new Schema({
 userSchema.pre("save", async function () {
 	const salt = await genSalt();
 	this.password = await hash(this.password, salt);
-
-	console.log(this.password);
 });
 
 const User = model("user", userSchema);

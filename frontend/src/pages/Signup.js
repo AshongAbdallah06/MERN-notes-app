@@ -5,12 +5,24 @@ const Signup = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
+	const [errors, setErrors] = useState({ email, username, password });
+
 	const submitForm = async () => {
 		const response = await fetch("http://localhost:3001/signup", {
 			method: "POST",
 			body: JSON.stringify({ username, email, password }),
 			headers: { "Content-Type": "application/json" },
 		});
+
+		const data = await response.json();
+
+		if (data.errors) {
+			setErrors({
+				email: data.errors.email,
+				username: data.errors.username,
+				password: data.errors.password,
+			});
+		}
 	};
 
 	useEffect(() => {}, [username, email, password]);
@@ -33,7 +45,7 @@ const Signup = () => {
 						setUsername(e.target.value);
 					}}
 				/>
-				<span className="username error"></span>
+				<span className="username error">{errors.username}</span>
 			</div>
 
 			<div>
@@ -45,7 +57,7 @@ const Signup = () => {
 						setEmail(e.target.value);
 					}}
 				/>
-				<span className="email error"></span>
+				<span className="email error">{errors.email}</span>
 			</div>
 
 			<div>
@@ -57,7 +69,7 @@ const Signup = () => {
 						setPassword(e.target.value);
 					}}
 				/>
-				<span className="password error"></span>
+				<span className="password error">{errors.password}</span>
 			</div>
 
 			<button type="submit">Signup</button>

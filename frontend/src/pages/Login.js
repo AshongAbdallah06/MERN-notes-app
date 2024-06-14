@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const Login = ({ data, getData }) => {
+const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
@@ -31,10 +31,6 @@ const Login = ({ data, getData }) => {
 			window.location.href = "/";
 		}
 	};
-
-	useEffect(() => {
-		getData("login");
-	}, []);
 
 	return (
 		<form

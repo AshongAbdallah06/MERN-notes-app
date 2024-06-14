@@ -1,10 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const Home = ({ data, getData }) => {
-	useEffect(() => {
-		getData("home");
-	}, []);
-
+const Home = () => {
 	return (
 		<main>
 			<h1 className="headings">Welcome to the Notes App</h1>

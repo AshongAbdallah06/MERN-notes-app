@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Axios from "axios";
@@ -15,13 +15,6 @@ import UserProfile from "./pages/UserProfile";
 import Error from "./pages/404Error";
 
 function App() {
-	const [data, setData] = useState("");
-
-	const getData = async (url) => {
-		const res = await Axios.get(`http://localhost:3001/${url}`);
-		setData(res.data);
-	};
-
 	return (
 		<div className="App">
 			<Router>
@@ -31,83 +24,43 @@ function App() {
 					{/* Home Route */}
 					<Route
 						path="/"
-						element={
-							<Home
-								data={data}
-								getData={getData}
-							/>
-						}
+						element={<Home />}
 					/>
 
 					{/* Login and Signup Routes */}
 					<Route
 						path="/login"
-						element={
-							<Login
-								data={data}
-								getData={getData}
-							/>
-						}
+						element={<Login />}
 					/>
 					<Route
 						path="/signup"
-						element={
-							<Signup
-								data={data}
-								getData={getData}
-							/>
-						}
+						element={<Signup />}
 					/>
 					{/* Login and Signup Routes */}
 
 					{/* Note Routes */}
 					<Route
 						path="/notes"
-						element={
-							<Notes
-								data={data}
-								getData={getData}
-							/>
-						}
+						element={<Notes />}
 					/>
 					<Route
 						path="/note"
-						element={
-							<Note
-								data={data}
-								getData={getData}
-							/>
-						}
+						element={<Note />}
 					/>
 					<Route
 						path="/note/add"
-						element={
-							<AddNote
-								data={data}
-								getData={getData}
-							/>
-						}
+						element={<AddNote />}
 					/>
 					<Route
 						path="/note/edit"
-						element={
-							<EditNote
-								data={data}
-								getData={getData}
-							/>
-						}
+						element={<EditNote />}
 					/>
 					{/* Note Routes */}
 
 					{/* User Route */}
 					<Route
 						path="/user-profile"
-						element={
-							<UserProfile
-								data={data}
-								getData={getData}
-							/>
-						}
+						element={<UserProfile />}
 					/>
 
 					<Route

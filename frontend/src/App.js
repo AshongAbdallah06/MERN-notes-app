@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Axios from "axios";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Header from "./components/Header";
@@ -64,8 +63,13 @@ function App() {
 					/>
 
 					<Route
-						path="*"
+						path="/logout"
 						element={<Error />}
+					/>
+
+					<Route
+						path="*"
+						element="404 Error. Page not found"
 					/>
 				</Routes>
 

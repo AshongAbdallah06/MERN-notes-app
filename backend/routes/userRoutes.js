@@ -22,4 +22,6 @@ userRoutes.get("/signup", userController.signup_get);
 
 userRoutes.post("/signup", userController.signup_post);
 
+userRoutes.post("/logout", userController.logout_get);
+
 module.exports = userRoutes;

@@ -9,6 +9,10 @@ const {
 
 const userRoutes = Router();
 const userController = require("../controllers/userController.js");
+const jwt = require("jsonwebtoken");
+const { verifyToken } = require("../middleware/verifyToken.js");
+
+userRoutes.get("*", verifyToken);
 
 userRoutes.get("/", userController.home_redirect);
 

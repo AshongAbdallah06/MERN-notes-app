@@ -9,7 +9,7 @@ const Error = () => {
 		});
 
 		// Redirect back to home
-		window.location.href = "/";
+		window.location.href = "/login";
 	};
 
 	// Make request when page mounts

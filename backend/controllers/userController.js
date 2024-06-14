@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const jwt = require("jsonwebtoken");
 
 const handleErrors = (err) => {
 	const errors = { email: "", password: "", username: "" };
@@ -31,6 +32,12 @@ const handleErrors = (err) => {
 	return errors;
 };
 
+// Create token to track user
+const maxAge = 3 * 60 * 60 * 24;
+const createToken = (id) => {
+	return jwt.sign({ id }, "secretString", { expiresIn: maxAge });
+};
+
 const home_redirect = (req, res) => {
 	res.redirect("home");
 };
@@ -48,6 +55,10 @@ const login_post = async (req, res) => {
 
 	try {
 		const user = await User.login(email, password);
+
+		const token = createToken(user._id);
+		res.cookie("jwt", token, { maxAge: maxAge * 1000, httpOnly: true });
+
 		res.status(201).json({ user });
 	} catch (err) {
 		const errors = await handleErrors(err);
@@ -62,10 +73,15 @@ const signup_get = (req, res) => {
 const signup_post = async (req, res) => {
 	try {
 		const user = await User.create(req.body);
+
+		const token = createToken(user._id);
+		res.cookie("jwt", token, { maxAge: maxAge * 1000 });
+
 		res.status(201).json({ user });
 	} catch (err) {
 		const errors = await handleErrors(err);
 		res.status(403).json({ errors });
 	}
 };
+
 module.exports = { home_redirect, home_get, login_get, login_post, signup_get, signup_post };

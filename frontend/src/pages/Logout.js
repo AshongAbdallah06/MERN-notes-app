@@ -16,6 +16,15 @@ const Error = () => {
 	useEffect(() => {
 		handleLogout();
 	}, []);
+
+	return (
+		<h1
+			style={{ textAlign: "center", margin: "2rem" }}
+			className="logout-header"
+		>
+			Logging out ...
+		</h1>
+	);
 };
 
 export default Error;

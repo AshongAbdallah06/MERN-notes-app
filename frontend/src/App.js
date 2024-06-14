@@ -11,7 +11,7 @@ import AddNote from "./pages/AddNote";
 import Note from "./pages/Note";
 import EditNote from "./pages/EditNote";
 import UserProfile from "./pages/UserProfile";
-import Error from "./pages/404Error";
+import Error from "./pages/Logout";
 
 function App() {
 	return (

@@ -4,7 +4,7 @@ import addBtn from "../images/add-circle-outline.svg";
 
 const Notes = () => {
 	return (
-		<>
+		<div className="margin-tops">
 			<h1 className="headings">My Notes</h1>
 			<div className="notes">
 				<Link
@@ -31,7 +31,7 @@ const Notes = () => {
 					</li>
 				</Link>
 			</div>
-		</>
+		</div>
 	);
 };
 

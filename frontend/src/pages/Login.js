@@ -40,6 +40,7 @@ const Login = () => {
 
 				login();
 			}}
+			className="signup-forms"
 		>
 			<h1 className="headings">Login</h1>
 

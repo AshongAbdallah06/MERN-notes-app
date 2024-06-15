@@ -2,7 +2,7 @@ import React from "react";
 
 const AddNote = () => {
 	return (
-		<>
+		<div className="margin-tops">
 			<h1 className="headings">Add a New Note</h1>
 
 			<form className="add-form">
@@ -25,7 +25,7 @@ const AddNote = () => {
 				</div>
 				<button type="submit">Add Note</button>
 			</form>
-		</>
+		</div>
 	);
 };
 

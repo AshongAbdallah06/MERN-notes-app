@@ -22,6 +22,18 @@ header {
 	padding: 1.5rem;
 	text-align: center;
 	font-size: 1.2rem;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.logo {
+	color: rgb(231, 231, 231);
+	text-decoration: none;
+	font-size: 1.5rem;
+	font-weight: bold;
+	letter-spacing: 0.1rem;
 }
 
 header,
@@ -41,10 +53,6 @@ header nav a {
 
 header nav a:hover {
 	color: #004d40;
-}
-
-main {
-	padding: 2rem;
 }
 
 .error {
@@ -67,6 +75,13 @@ main {
 	color: white;
 	background-color: rgb(37, 37, 37);
 	opacity: 0.8;
+}
+
+main,
+.margin-tops,
+.signup-forms,
+.note-container {
+	margin: 10rem auto;
 }
 
 /* Home Page */
@@ -178,13 +193,13 @@ h3 {
 }
 
 .notes span {
-	display: -webkit-box; /* Required for applying -webkit-line-clamp */
-	-webkit-box-orient: vertical; /* Specifies the box's orientation */
-	-webkit-line-clamp: 5; /* Number of lines to show before clamping */
-	overflow: hidden; /* Hides the overflow text */
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;
+	overflow: hidden;
 	text-overflow: ellipsis;
-	position: relative; /* For adding padding within the height constraint */
-	max-height: calc(1.2em * 6 + 2rem); /* Adjusted max-height */
+	position: relative;
+	max-height: calc(1.2em * 6 + 2rem);
 }
 
 .notes li:hover {
@@ -198,16 +213,11 @@ h3 {
 }
 
 /* Single Note */
-main {
-	padding: 2rem;
-}
-
 h1 {
 	margin-bottom: 0;
 }
 
 main p {
-	/* line-height: 2rem; */
 	text-align: justify;
 	font-size: 1.3rem;
 	padding: 0 3rem;
@@ -217,24 +227,31 @@ main p {
 .note-container {
 	background: #ffffff;
 	padding: 2rem;
-	margin: 2rem;
+	margin-right: 2rem;
+	margin-left: 2rem;
 	border-radius: 0.5rem;
 	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-	position: relative;
+}
+
+.note-container .top {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.note-container .bottom {
+	margin-top: 2rem;
 }
 
 .created-at {
-	margin-bottom: 2rem;
 	padding: 0;
 	color: gray;
 	font-size: 0.9rem;
 }
 
 .delete {
-	position: absolute;
-	right: 5rem;
-	top: 2rem;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem;
+	height: 3rem;
 	border: none;
 	background-color: #00796b;
 	color: white;
